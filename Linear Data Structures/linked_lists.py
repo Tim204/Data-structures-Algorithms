@@ -92,7 +92,15 @@ class LinkedList:
                 current = current.next
 
     def reverse(self):
-        pass
+        previous = None
+        current = self._first
+
+        while current is not None:
+            nxt = current.next
+            current.next = previous
+            previous = current
+            current = nxt
+        self._first = previous
 
     def print_lis(self):
         first_node = self._first
@@ -103,13 +111,17 @@ class LinkedList:
 
 week_days = LinkedList()
 
-week_days.add_first("Monday")
+week_days.add_last("Monday")
 week_days.add_last("Wednesday")
 week_days.add_last("Friday")
+week_days.add_first("Sunday")
+
 
 
 
 print(week_days.sizeof())
+print(week_days.convert_to_list())
+week_days.reverse()
 print(week_days.convert_to_list())
 
 # sl.add_first(25)
