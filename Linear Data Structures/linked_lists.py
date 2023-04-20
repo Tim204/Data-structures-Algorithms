@@ -96,11 +96,27 @@ class LinkedList:
         current = self._first
 
         while current is not None:
-            nxt = current.next
+            next = current.next
             current.next = previous
             previous = current
-            current = nxt
+            current = next
         self._first = previous
+
+    def get_kth_from_end(self, k):
+        a = self._first
+        b = self._first
+        count = 0
+        while count < k-1:
+            if b is None:
+                raise Exception("Value error")
+            else:
+                b = b.next
+                count += 1
+
+        while b != self._last:
+            a = a.next
+            b = b.next
+        return a.value
 
     def print_lis(self):
         first_node = self._first
@@ -121,8 +137,9 @@ week_days.add_first("Sunday")
 
 print(week_days.sizeof())
 print(week_days.convert_to_list())
-week_days.reverse()
 print(week_days.convert_to_list())
+
+print(week_days.get_kth_from_end(0))
 
 # sl.add_first(25)
 #
@@ -130,7 +147,3 @@ print(week_days.convert_to_list())
 # sl.print_lis()
 # sl.remove_last()
 # print(sl.sizeof())
-
-
-
-
