@@ -103,6 +103,7 @@ class LinkedList:
         self._first = previous
 
     def get_kth_from_end(self, k):
+        # a and b are pointers
         a = self._first
         b = self._first
         count = 0
@@ -112,11 +113,10 @@ class LinkedList:
             else:
                 b = b.next
                 count += 1
-
         while b != self._last:
             a = a.next
             b = b.next
-        return a.value
+        return a.value if a is not None else Exception("The list is empty")
 
     def print_lis(self):
         first_node = self._first
@@ -139,7 +139,7 @@ print(week_days.sizeof())
 print(week_days.convert_to_list())
 print(week_days.convert_to_list())
 
-print(week_days.get_kth_from_end(0))
+print(week_days.get_kth_from_end(1))
 
 # sl.add_first(25)
 #
@@ -147,3 +147,4 @@ print(week_days.get_kth_from_end(0))
 # sl.print_lis()
 # sl.remove_last()
 # print(sl.sizeof())
+
