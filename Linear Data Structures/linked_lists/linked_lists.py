@@ -125,26 +125,4 @@ class LinkedList:
             first_node = first_node.next
 
 
-week_days = LinkedList()
-
-week_days.add_last("Monday")
-week_days.add_last("Wednesday")
-week_days.add_last("Friday")
-week_days.add_first("Sunday")
-
-
-
-
-print(week_days.sizeof())
-print(week_days.convert_to_list())
-print(week_days.convert_to_list())
-
-print(week_days.get_kth_from_end(1))
-
-# sl.add_first(25)
-#
-# print(sl.sizeof())
-# sl.print_lis()
-# sl.remove_last()
-# print(sl.sizeof())
 
