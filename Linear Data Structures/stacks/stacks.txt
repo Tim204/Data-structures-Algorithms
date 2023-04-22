@@ -1,0 +1,12 @@
+STACKS
+
+Uses:
+    . Stacks are usually used to implement undo features.
+    . Can be used for building compilers( for parsing the syntax of an expression )
+    . Evaluate arithmetic expressions.
+    . Build navigation apps or web browsers (forward/back)
+
+. Stacks are based around the LIFO(Last In, First Out) principal
+
+NOTE: Whenever you deal with a problem involving doing an action in reverse, STACKS are Your best friend!
+      . You could take reversing a string as an example.
