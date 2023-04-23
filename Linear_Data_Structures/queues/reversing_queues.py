@@ -1,24 +1,27 @@
 from queue import Queue
+from Linear_Data_Structures.stacks.stacks import Stack
 
 
 class QReverser:
+    """Reverting a queue using Stacks"""
     def __init__(self, queue):
         self._queue = queue
 
     def reverse(self):
-        q = []
-        for i in self._queue.queue:
-            q.append(i)
-        return q
+        stack = Stack()
+        while not self._queue.empty():
+            stack.push(self._queue.get())
+        while not stack.is_empty():
+            self._queue.put(stack.pop())
+        return self._queue.queue
 
 
-queu = Queue()
-queu.put(10)
-queu.put(20)
-queu.put(30)
-queu.get()
+queue = Queue()
+queue.put(10)
+queue.put(20)
+queue.put(30)
 
-rev = QReverser(queu)
-print(rev.reverse())
-
+queue_reverser = QReverser(queue)
+print(f"Original queue: {queue.queue}\n")
+print(f"Reversed queue: {queue_reverser.reverse()}")
 
