@@ -1,0 +1,29 @@
+Queues:
+
+. Queues are Data structures similar to stacks, except that in Queues, the first item inserted,
+  is the first item to get out -> this is what is called FIFO(First in, First Out)
+
+. Queues in programing are similar to queues of people in the real world. People Join from the back, and leave
+   from the front.
+
+1- Uses:
+    . Queues are used in situation where a resources must be shared amongst multiple consumers.
+       -> Said consumers would line up and use the resource one by one.
+
+    examples:
+        . Printers -> print what's requested in the order that the request is submitted
+        . Operating systems use queues to manage processes
+        . Web servers use queues to manage incoming requests
+
+
+2 - RUNTIME COMPLEXITIES:
+
+        Operations:
+            . enqueue:  O(1)
+            . dequeue:  O(1)
+            . peek:     O(1)
+            . isEmpty:  O(1)
+            . isFull:   O(1)
+
+        Operations in queues are similar to operations in stacks. They all run in constant time O(1),
+        because items are added or removed from the end.
