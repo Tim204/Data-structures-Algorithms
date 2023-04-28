@@ -1,0 +1,24 @@
+Hash Tables (Dictionaries):
+
+. Hash Tables are frequently used in order to optimize algorithms.
+. They are extremely useful when it comes to performing operations that involve looking up items.
+. They are used to store key, value pairs.
+. Hash tables are deterministic- Meaning that it will always return the same value when the same input is provided
+  - For this reason hash tables can be used for storing and retrieving objects.
+
+1 - USES:
+        . In spell checkers - looking up words
+        . Dictionaries - To look up words
+        . Compilers - they use hash tables to quickly look up the address of functions or
+          variables
+
+        . Code editors, etc...
+
+        - Hash tables are used in any instance that requires looking up an item very fast
+
+2 - RUNTIME COMPLEXITIES:
+        . insert:  O(1)
+        . lookup:  O(1)
+        . delete:  O(1)
+
+        NOTE: in some scenarios these operation may run in O(n) but in practical terms they usually run in O(1)
