@@ -7,20 +7,15 @@ class CharFinder:
         self._dict = {}
 
     def non_repeating_chars(self, string):
-        for chars in string:
+        for chars in string.lower():
             if chars.isalpha():
-                self._dict[chars.lower()] = string.count(chars)
+                self._dict.__setitem__(chars, string.lower().count(chars))
 
         for key, value in self._dict.items():
             if value == 1:
                 return key
-            return 0
+        return 0
 
 
 ch = CharFinder()
-print(ch.non_repeating_chars("hello world"))
-
-
-
-
-
+print(ch.non_repeating_chars("I Live off Grid"))
