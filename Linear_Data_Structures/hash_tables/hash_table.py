@@ -14,7 +14,7 @@ class HashTable:
     def __init__(self, size=1000):
         """
             using python list as storage, each list element is also a list,
-            which helps in solving hash conflict
+            which helps in solving hash collisions
         """
         self._storage = [[] for _ in range(size)]
         self._size = size
