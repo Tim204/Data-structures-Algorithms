@@ -12,7 +12,7 @@ class QReverser:
         while not self._queue.empty():
             stack.push(self._queue.get())
         while not stack.is_empty():
-            self._queue.put(stack.pop())
+            self._queue.__setitem__(stack.pop())
         return self._queue.queue
 
 
