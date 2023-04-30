@@ -92,8 +92,8 @@ class HashTable:
 
     def __str__(self):
         res = []
-        for ele in self._storage:
-            for key_value in ele:
+        for list_element in self._storage:
+            for key_value in list_element:
                 if isinstance(key_value[0], str):
                     key_str = f'\'{key_value[0]}\''
                 else:
