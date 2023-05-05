@@ -24,11 +24,7 @@ class BinaryTreeNode:
                 current = self.right_child
 
 
-root = BinaryTreeNode()
-root.insert(4)
-root.insert(9)
-root.insert(1)
-root.insert(8)
+
 
 
 
@@ -84,3 +80,49 @@ root.insert(8)
 # root.insert(19)
 # # printing BST
 # root.PrintTree()
+
+class Tree:
+    def __init__(self):
+        self.root = None
+
+    class Node:
+        def __init__(self, value=None):
+            self.value = value
+            self.left_child = None
+            self.right_child = None
+
+        def __str__(self):
+            return "Node=" + self.value
+        def __repr__(self):
+            return self.__str__()
+
+
+    def inset(self, value):
+        node = self.Node(value)
+        if self.root is None:
+            self.root = self.Node(value)
+            return
+        current = self.root
+
+        while True:
+            if value < current.value:
+                if current.left_child is None:
+                    current.left_child = node
+                    break
+                current = current.left_child
+            else:
+                if current.right_child is None:
+                    current.right_child = node
+                    break
+                current = current.right_child
+
+    def __str__(self):
+        return self.Node().value
+
+
+tree = Tree()
+tree.inset(7)
+tree.inset(4)
+tree.inset(9)
+tree.inset(1)
+print("done")
