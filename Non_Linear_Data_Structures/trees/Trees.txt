@@ -54,7 +54,7 @@ TREES
 
     A Technique called RECURSION is used when traversing a tree.
     . Recursion is a powerful programing technique used to implement repetition; just like loops.
-    . Recursion happens when a function or a method class itself.
+    . Recursion happens when a function or a method calls itself.
 
 
 4. RUNTIME COMPLEXITIES: (on a BST)
