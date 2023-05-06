@@ -1,89 +1,11 @@
+"""
+    Implementation of a Binary Tree using a Nested Node class
+"""
 
-class BinaryTreeNode:
-    def __init__(self, value=None):
-        self.value = value
-        self.left_child = None
-        self.right_child = None
-
-    def insert(self, value):
-        if self.value is None:
-            self.value = value
-            return
-        current = self.value
-
-        while True:
-            if value < current:
-                if self.left_child is None:
-                    self.left_child = BinaryTreeNode(value)
-                    break
-                current = self.left_child
-            else:
-                if self.right_child is None:
-                    self.right_child = BinaryTreeNode(value)
-                    break
-                current = self.right_child
-
-
-
-
-
-
-# Creating node class
-# class Node:
-#     def __init__(self, data):
-#         self.data = data
-#         self.leftChild = None
-#         self.rightChild = None
-#
-# # Function to insert in BST
-#     def insert(self, data):
-#         # if value is lesser than the value of the parent node
-#         if data < self.data:
-#             if self.leftChild:
-#                 # if we still need to move towards the left subtree
-#                 self.leftChild.insert(data)
-#             else:
-#                 self.leftChild = Node(data)
-#                 return
-#         # if value is greater than the value of the parent node
-#         else:
-#             if self.rightChild:
-#                 # if we still need to move towards the right subtree
-#                 self.rightChild.insert(data)
-#             else:
-#                 self.rightChild = Node(data)
-#                 return
-#
-#     # function to print a BST
-#     def PrintTree(self):
-#         if self.leftChild:
-#             self.leftChild.PrintTree()
-#         print( self.data),
-#         if self.rightChild:
-#             self.rightChild.PrintTree()
-#
-#     # def PrintTree(self):
-#     #     if self.left:
-#     #         self.left.PrintTree()
-#     #     print(self.data),
-#     #     if self.right:
-#     #         self.right.PrintTree()
-#
-#
-# # Creating root node
-# root = Node(27)
-# # Inserting values in BST
-# root.insert(14)
-# root.insert(35)
-# root.insert(31)
-# root.insert(10)
-# root.insert(19)
-# # printing BST
-# root.PrintTree()
 
 class Tree:
     def __init__(self):
-        self.root = None
+        self._root = self.Node().value
 
     class Node:
         def __init__(self, value=None):
@@ -97,13 +19,13 @@ class Tree:
         def __repr__(self):
             return self.__str__()
 
-    def inset(self, value):
+    def insert(self, value):
         node = self.Node(value)
-        if self.root is None:
-            self.root = node
+        if self._root is None:
+            self._root = node
             return
+        current = self._root
 
-        current = self.root
         while True:
             if value < current.value:
                 if current.left_child is None:
@@ -117,7 +39,7 @@ class Tree:
                 current = current.right_child
 
     def find(self, value):
-        current = self.root
+        current = self._root
 
         while current is not None:
             if value < current.value:
@@ -128,18 +50,59 @@ class Tree:
                 return True
         return False
 
+    def traverse_pre_order(self):
+        """
+        Similar to Method overloading in Java.
+        Required to handle the private root node
+        """
+        self._traverse_pre_order(self._root)
+
+    def traverse_in_order(self):
+        self._traverse_in_order(self._root)
+
+    def traverse_post_order(self):
+        self._traverse_post_order(self._root)
+
+    def _traverse_pre_order(self, root):
+        """this method is simply implementation detail"""
+        if root is None:
+            return
+        print(root.value)
+        self._traverse_pre_order(root.left_child)
+        self._traverse_pre_order(root.right_child)
+
+    def _traverse_in_order(self, root):
+        if root is None:
+            return
+        self._traverse_in_order(root.left_child)
+        print(root.value)
+        self._traverse_in_order(root.right_child)
+
+    def _traverse_post_order(self, root):
+        if root is None:
+            return
+        self._traverse_post_order(root.left_child)
+        self._traverse_post_order(root.right_child)
+        print(root.value)
+
     def __str__(self):
-        return str(self.root)
+        return str(self._root)
 
 
 tree = Tree()
-tree.inset(7)
-tree.inset(4)
-tree.inset(9)
-tree.inset(1)
-tree.inset(6)
-tree.inset(8)
-tree.inset(10)
+tree.insert(7)
+tree.insert(4)
+tree.insert(9)
+tree.insert(1)
+tree.insert(6)
+tree.insert(8)
+tree.insert(10)
 
-print(tree.find(-1))
-print("done")
+print("PRE ORDER:")
+tree.traverse_pre_order()
+print("\nIN ORDER:")
+tree.traverse_in_order()
+print("\nPOST ORDER:")
+tree.traverse_post_order()
+
+print("\ndone")

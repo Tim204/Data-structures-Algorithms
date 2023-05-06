@@ -52,7 +52,9 @@ TREES
                   . If root is in the MIDDLE than it's IN-ORDER
                   . Root at the END mean POST-ORDER
 
-            A Technique called RECURSION is used when traversing a tree.
+    A Technique called RECURSION is used when traversing a tree.
+    . Recursion is a powerful programing technique used to implement repetition; just like loops.
+    . Recursion happens when a function or a method class itself.
 
 
 4. RUNTIME COMPLEXITIES: (on a BST)
