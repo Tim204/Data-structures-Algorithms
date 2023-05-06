@@ -1,0 +1,69 @@
+TREES
+
+. A tree is a data structure that stores data elements in a hierarchy.
+  - We refer to said elements as "nodes"- Each node contains a value or data.
+  - Data stored in nodes can be anything ranging integers to objects.
+  - The lines connecting the nodes are called "edges"
+
+1- STRUCTURE:
+        . The TOP node on the tree is called the "root node".
+        . Root nodes usually have children and are therefore considered "parent"
+        . The nodes that don't have any children( usually found at the bottom) are called "leaf nodes"
+
+    NOTE: A tree where each node has a maximum of two children is called Binary Tree.
+
+    . There is a special type of Binary tree referred to as Binary Search Tree.
+       - A BST allows us to quickly look up data
+       - In a BST the value of ANY node is ALWAYS Greater than the value of its LEFT CHILD and SMALLER than the value
+         of its RIGHT CHILD
+       - Every node in the left subtree will always be smaller than the root.
+       - Every node on the right subtree will always be greater than root
+
+
+
+2. USES:
+       - Tress are used anywhere you wish to represent hierarchical data.
+       - Some examples would include a tree of people in an organization, files and folders on device or a family tree
+
+       - Trees are also used in:
+           . Databases - DMS use tree for indexing, allowing for easier lookup of data
+           . Graphical User Interfaces
+           . Websites
+           . Implementing features like auto-completion on a web browser
+           . Compilers
+           . etc..
+
+
+3. TRAVERSING A BST:
+
+    - Linear Data structures only allow one way of traversing, but Tress are Non-Linear Data Structures.
+    - With Trees, there are many approaches on ways of traversing, but they can all be classified into two Categories:
+
+            1. BREATH FIRST( Level Order Traversal)
+               . In this approach you first visit all the nodes at the same level before visiting the nodes on the next.
+
+            2. DEPHT FIRST:
+                2.1. Pre-order : ROOT->LEFT SUBTREE->RIGHT SUBTREE
+                2.2. In-order  : LEFT SUBTREE->ROOT->RIGHT SUBTREE
+                2.3. Post-order: LEFT SUBTREE-> RIGHT SUBTREE->ROOT
+
+            NOTE: An easy way to remember:
+                  . If root is visited FIRST then it's PRE-ORDER
+                  . If root is in the MIDDLE than it's IN-ORDER
+                  . Root at the END mean POST-ORDER
+
+            A Technique called RECURSION is used when traversing a tree.
+
+
+4. RUNTIME COMPLEXITIES: (on a BST)
+
+       Operations:
+            . looking up items:  O(log n)
+            . Insert items:      O(log n) -> Finding a new node runs in logarithmic time. Inserting the node runs in
+                                            Constant time O(1)
+
+            . Delete:           O(log n) -> To delete a node we first need to look it up, and then we remove it from
+                                            the tree by reconnecting the edges.
+
+       NOTE: Tress provide a better performance than arrays and Linked list. On top of that, they allow us to model
+             Hierarchical data, BUT if a tree is not structure properly it's performance can degrade to O(n).

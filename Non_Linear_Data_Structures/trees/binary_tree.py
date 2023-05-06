@@ -92,18 +92,18 @@ class Tree:
             self.right_child = None
 
         def __str__(self):
-            return "Node=" + self.value
+            return f"Node = {self.value}"
+
         def __repr__(self):
             return self.__str__()
-
 
     def inset(self, value):
         node = self.Node(value)
         if self.root is None:
-            self.root = self.Node(value)
+            self.root = node
             return
-        current = self.root
 
+        current = self.root
         while True:
             if value < current.value:
                 if current.left_child is None:
@@ -116,8 +116,20 @@ class Tree:
                     break
                 current = current.right_child
 
+    def find(self, value):
+        current = self.root
+
+        while current is not None:
+            if value < current.value:
+                current = current.left_child
+            elif value > current.value:
+                current = current.right_child
+            else:
+                return True
+        return False
+
     def __str__(self):
-        return self.Node().value
+        return str(self.root)
 
 
 tree = Tree()
@@ -125,4 +137,9 @@ tree.inset(7)
 tree.inset(4)
 tree.inset(9)
 tree.inset(1)
+tree.inset(6)
+tree.inset(8)
+tree.inset(10)
+
+print(tree.find(-1))
 print("done")
