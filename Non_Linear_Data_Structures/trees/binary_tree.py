@@ -63,6 +63,9 @@ class Tree:
     def traverse_post_order(self):
         self._traverse_post_order(self._root)
 
+    def height(self):
+        return self._height(self._root)
+
     def _traverse_pre_order(self, root):
         """this method is simply implementation detail"""
         if root is None:
@@ -85,6 +88,14 @@ class Tree:
         self._traverse_post_order(root.right_child)
         print(root.value)
 
+    def _height(self, root):
+        if root is None:
+            return -1
+        if root.left_child is None and root.right_child is None:
+            return 0
+        return 1 + max(self._height(root.left_child),
+                       self._height(root.right_child))
+
     def __str__(self):
         return str(self._root)
 
@@ -105,4 +116,7 @@ tree.traverse_in_order()
 print("\nPOST ORDER:")
 tree.traverse_post_order()
 
+print(f"\nHeight: {tree.height()}")
+
 print("\ndone")
+
