@@ -137,15 +137,4 @@ tree.insert(6)
 tree.insert(8)
 tree.insert(10)
 
-print("PRE ORDER:")
-tree.traverse_pre_order()
-print("\nIN ORDER:")
-tree.traverse_in_order()
-print("\nPOST ORDER:")
-tree.traverse_post_order()
-
-print(f"\nHeight: {tree.height()}")
-print(tree.bst_min())
-
-print("\ndone")
 
