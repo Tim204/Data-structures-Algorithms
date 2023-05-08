@@ -57,15 +57,6 @@ class Tree:
         """
         self._traverse_pre_order(self._root)
 
-    def traverse_in_order(self):
-        self._traverse_in_order(self._root)
-
-    def traverse_post_order(self):
-        self._traverse_post_order(self._root)
-
-    def height(self):
-        return self._height(self._root)
-
     def _traverse_pre_order(self, root):
         """this method is simply implementation detail"""
         if root is None:
@@ -74,6 +65,9 @@ class Tree:
         self._traverse_pre_order(root.left_child)
         self._traverse_pre_order(root.right_child)
 
+    def traverse_in_order(self):
+        self._traverse_in_order(self._root)
+
     def _traverse_in_order(self, root):
         if root is None:
             return
@@ -81,12 +75,18 @@ class Tree:
         print(root.value)
         self._traverse_in_order(root.right_child)
 
+    def traverse_post_order(self):
+        self._traverse_post_order(self._root)
+
     def _traverse_post_order(self, root):
         if root is None:
             return
         self._traverse_post_order(root.left_child)
         self._traverse_post_order(root.right_child)
         print(root.value)
+
+    def height(self):
+        return self._height(self._root)
 
     def _height(self, root):
         if root is None:
