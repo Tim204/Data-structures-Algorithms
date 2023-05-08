@@ -91,10 +91,38 @@ class Tree:
     def _height(self, root):
         if root is None:
             return -1
-        if root.left_child is None and root.right_child is None:
+        if self._is_leaf(root):
             return 0
         return 1 + max(self._height(root.left_child),
                        self._height(root.right_child))
+
+    def bst_min(self):
+        """For finding minimum values in Binary Search Trees"""
+        if self._root is None:
+            raise Exception("Tree is empty")
+        current = self._root
+        last = current
+        while current is not None:
+            last = current
+            current = current.left_child
+        return last.value
+
+    def min(self):
+        """Not applicable to Binary Search trees"""
+        return self._min(self._root)
+
+    def _min(self, root):
+        if root is None:
+            return -1
+        if self._is_leaf(root):
+            return root.value
+        right = self._min(root.right_child)
+        left = self._min(root.left_child)
+
+        return min(min(left, right), root.value)
+
+    def _is_leaf(self, node):
+        return node.left_child is None and node.right_child is None
 
     def __str__(self):
         return str(self._root)
@@ -117,6 +145,7 @@ print("\nPOST ORDER:")
 tree.traverse_post_order()
 
 print(f"\nHeight: {tree.height()}")
+print(tree.bst_min())
 
 print("\ndone")
 
