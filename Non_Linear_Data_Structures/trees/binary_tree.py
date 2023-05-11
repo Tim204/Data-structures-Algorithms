@@ -1,6 +1,7 @@
 """
     Implementation of a Binary Tree using a Nested Node class
 """
+import sys
 
 
 class Tree:
@@ -140,6 +141,30 @@ class Tree:
                 and self._equals(first_node.right_child, second_node.right_child )
 
         return False
+
+    def is_bst(self):
+        """Checks if a tree is a Binary search tree"""
+        max_value = sys.maxsize
+        min_value = -sys.maxsize
+        return self._is_bst(self._root, min_value, max_value)
+
+    def _is_bst(self, root, min_val, max_val):
+        if root is None:
+            return True
+        if root.value < min_val or root.value > max_val:
+            return False
+
+        return self._is_bst(root.left_child, min_val, root.value - 1) and \
+            self._is_bst(root.right_child, root.value + 1, max_val)
+
+    def swap_roots(self):
+        """
+        Swapping roots around to test the scenario where you're not dealing with a BST
+        Call this method first to check the opposite scenario of is_bst()
+        """
+        temp = self._root.left_child
+        self._root.left_child = self._root.right_child
+        self._root.right_child = temp
 
     def __str__(self):
         return str(self._root)
