@@ -125,6 +125,10 @@ class Tree:
     def _is_leaf(self, node):
         return node.left_child is None and node.right_child is None
 
+    """
+         Methods Bellow are all common Data Structure and Algorithms 
+         interview type Questions
+    """
     def equals(self, second_tree):
         """Compares if two Binary Search trees are equal"""
         if second_tree is None:
@@ -143,7 +147,10 @@ class Tree:
         return False
 
     def is_bst(self):
-        """Checks if a tree is a Binary search tree"""
+        """
+            Checks if a tree is a Binary search tree
+            Call swap_roots() first to check the opposite scenario
+        """
         max_value = sys.maxsize
         min_value = -sys.maxsize
         return self._is_bst(self._root, min_value, max_value)
@@ -165,6 +172,19 @@ class Tree:
         temp = self._root.left_child
         self._root.left_child = self._root.right_child
         self._root.right_child = temp
+
+    def print_nodes_at_distance(self, distance):
+        self._print_nodes_at_distance(self._root, distance)
+
+    def _print_nodes_at_distance(self, root, distance):
+        if root is None:
+            return
+
+        if distance == 0:
+            print(root.value)
+            return
+        self._print_nodes_at_distance(root.left_child, distance - 1)
+        self._print_nodes_at_distance(root.right_child, distance - 1)
 
     def __str__(self):
         return str(self._root)
