@@ -51,6 +51,13 @@ class Tree:
                 return True
         return False
 
+    def traverse_level_order(self):
+        i = 0
+        while i <= self.height():
+            for node in self.get_nodes_at_distance(i):
+                print(node)
+            i += 1
+
     def traverse_pre_order(self):
         """
         Similar to Method overloading in Java.
@@ -173,18 +180,20 @@ class Tree:
         self._root.left_child = self._root.right_child
         self._root.right_child = temp
 
-    def print_nodes_at_distance(self, distance):
-        self._print_nodes_at_distance(self._root, distance)
+    def get_nodes_at_distance(self, distance):
+        node_array = []
+        self._get_nodes_at_distance(self._root, distance, node_array)
+        return node_array
 
-    def _print_nodes_at_distance(self, root, distance):
+    def _get_nodes_at_distance(self, root, distance, node_array):
         if root is None:
             return
 
         if distance == 0:
-            print(root.value)
+            node_array.append(root.value)
             return
-        self._print_nodes_at_distance(root.left_child, distance - 1)
-        self._print_nodes_at_distance(root.right_child, distance - 1)
+        self._get_nodes_at_distance(root.left_child, distance - 1, node_array)
+        self._get_nodes_at_distance(root.right_child, distance - 1, node_array)
 
     def __str__(self):
         return str(self._root)
@@ -201,5 +210,4 @@ tree.insert(1)
 tree.insert(6)
 tree.insert(8)
 tree.insert(10)
-
 
