@@ -116,7 +116,7 @@ class Tree:
         return last.value
 
     def min(self):
-        """Not applicable to Binary Search trees"""
+        """Not applicable to Binary Search binary_trees"""
         return self._min(self._root)
 
     def _min(self, root):
@@ -137,7 +137,7 @@ class Tree:
          interview type Questions
     """
     def equals(self, second_tree):
-        """Compares if two Binary Search trees are equal"""
+        """Compares if two Binary Search binary_trees are equal"""
         if second_tree is None:
             return False
         return self._equals(self._root, second_tree._root)
