@@ -124,8 +124,28 @@ class Tree:
     def _is_leaf(self, node):
         return node.left_child is None and node.right_child is None
 
+    def equals(self, second_tree):
+        """Compares if two Binary Search trees are equal"""
+        if second_tree is None:
+            return False
+        return self._equals(self._root, second_tree._root)
+
+    def _equals(self, first_node, second_node):
+        if first_node is None and second_node is None:
+            return True
+        if first_node is not None and second_node is not None:
+            # looking at left and right subtrees recursively
+            return first_node.value == second_node.value \
+                and self._equals(first_node.left_child, second_node.left_child) \
+                and self._equals(first_node.right_child, second_node.right_child )
+
+        return False
+
     def __str__(self):
         return str(self._root)
+
+    def __repr__(self):
+        return self.__str__()
 
 
 tree = Tree()
