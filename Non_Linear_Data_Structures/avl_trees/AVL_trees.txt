@@ -1,0 +1,9 @@
+
+. AVL TREES:
+
+
+. AVL trees are a special type of tree that self-balance, everytime you add or remove nodes.
+. They accomplish this by ensuring that the difference between the heigh on the left and
+  right subtrees is never more than 1.
+. If the difference happens to be greater than 1 the trees rebalance themselves usin "Rotations".
+
