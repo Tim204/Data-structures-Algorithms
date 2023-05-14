@@ -29,7 +29,24 @@ class AVLTree:
             root.right_child = self._insert(root.right_child, value)
         root.height = max(self._height(root.left_child),
                           self._height(root.right_child)) + 1
+
+        balance_factor = self._balance_factor(root)
+        if self._is_left_heavy(root):
+            print(f"{root.value} is left heavy")
+        elif self._is_right_heavy(root):
+            print(f"{root.value} is right heavy")
+
         return root
+
+    def _is_left_heavy(self, node):
+        return self._balance_factor(node) > 1
+
+    def _is_right_heavy(self, node):
+        return self._balance_factor(node) < 1
+
+    def _balance_factor(self, node):
+        return 0 if node is None else \
+            self._height(node.right_child) - self._height(node.right_child)
 
     def _height(self, node):
         return -1 if node is None else node.height
