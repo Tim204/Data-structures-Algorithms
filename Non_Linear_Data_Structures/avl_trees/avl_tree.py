@@ -27,22 +27,50 @@ class AVLTree:
             root.left_child = self._insert(root.left_child, value)
         else:
             root.right_child = self._insert(root.right_child, value)
-        root.height = max(self._height(root.left_child),
-                          self._height(root.right_child)) + 1
+        self._set_height(root)
 
-        balance_factor = self._balance_factor(root)
+        return self._balance(root)
+
+    def _balance(self, root):
         if self._is_left_heavy(root):
-            print(f"{root.value} is left heavy")
+            if self._balance_factor(root.left_child) < 0:
+                root.left_child = self._rotate_left(root.left_child)
+            return self._rotate_right(root)
         elif self._is_right_heavy(root):
-            print(f"{root.value} is right heavy")
-
+            if self._balance_factor(root.right_child) > 0:
+                root.right_child = self._rotate_right(root.right_child)  # Right rotation
+            return self._rotate_left(root)
         return root
+
+    def _rotate_right(self, root):
+        new_root = root.left_child
+        root.left_child = new_root.right_child
+        new_root.right_child = root
+
+        self._set_height(root)
+        self._set_height(new_root)
+
+        return new_root
+
+    def _rotate_left(self, root):
+        new_root = root.right_child
+        root.right_child = new_root.left_child
+        new_root.left_child = root
+
+        self._set_height(root)
+        self._set_height(new_root)
+
+        return new_root
+
+    def _set_height(self, node):
+        node.height = max(self._height(node.left_child),
+                          self._height(node.right_child)) + 1
 
     def _is_left_heavy(self, node):
         return self._balance_factor(node) > 1
 
     def _is_right_heavy(self, node):
-        return self._balance_factor(node) < 1
+        return self._balance_factor(node) < -1
 
     def _balance_factor(self, node):
         return 0 if node is None else \
@@ -62,9 +90,4 @@ avl = AVLTree()
 avl.insert(10)
 avl.insert(20)
 avl.insert(30)
-
-
-
-
-
-
+avl.insert(40)
