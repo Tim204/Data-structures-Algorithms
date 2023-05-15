@@ -34,12 +34,13 @@ class AVLTree:
     def _balance(self, root):
         if self._is_left_heavy(root):
             if self._balance_factor(root.left_child) < 0:
-                root.left_child = self._rotate_left(root.left_child)
+                root.left_child = self._rotate_left(root.left_child)  # Left rotation
             return self._rotate_right(root)
         elif self._is_right_heavy(root):
             if self._balance_factor(root.right_child) > 0:
                 root.right_child = self._rotate_right(root.right_child)  # Right rotation
             return self._rotate_left(root)
+
         return root
 
     def _rotate_right(self, root):
@@ -48,7 +49,7 @@ class AVLTree:
         new_root.right_child = root
 
         self._set_height(root)
-        self._set_height(new_root)
+        self._set_height(new_root)  # resetting the height
 
         return new_root
 
