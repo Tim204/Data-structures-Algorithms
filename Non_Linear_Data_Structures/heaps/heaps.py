@@ -1,5 +1,5 @@
 """
-    Implementing a Heap using a list
+    Implementing a Max Heap using a list
 """
 
 
@@ -96,3 +96,12 @@ class Heap:
         self.items[second_index] = temporary
 
 
+heap = Heap()
+heap.insert(10)
+heap.insert(5)
+heap.insert(17)
+heap.insert(4)
+heap.insert(22)
+heap.remove()
+
+# print(heap.items)
