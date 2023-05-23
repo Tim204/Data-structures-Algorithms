@@ -8,12 +8,12 @@ from heaps import Heap
 class Sort:
     def __init__(self, array):
         self._array = array
-        self._heap = Heap()
 
     def _populated_heap(self):
+        heap = Heap()
         for number in self._array:
-            self._heap.insert(number)
-        return self._heap
+            heap.insert(number)
+        return heap
 
     def descending_order(self):
         heap = self._populated_heap()
@@ -32,5 +32,5 @@ class Sort:
 
 sort = Sort([5, 3, 10, 1, 4, 2])
 print(sort.descending_order())
-# print(sort.ascending_order())
+print(sort.ascending_order())
 
