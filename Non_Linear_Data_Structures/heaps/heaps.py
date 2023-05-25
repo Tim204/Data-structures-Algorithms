@@ -95,6 +95,11 @@ class Heap:
         self.items[first_index] = self.items[second_index]
         self.items[second_index] = temporary
 
+    def max(self):
+        if self.is_empty():
+            raise Exception("No elements in this heap")
+        return self.items[0]
+
 
 heap = Heap()
 heap.insert(10)

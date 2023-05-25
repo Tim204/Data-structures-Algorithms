@@ -1,6 +1,7 @@
 """
     Transforming an Array into a heap in place
 """
+from Non_Linear_Data_Structures.heaps.heaps import Heap
 
 
 class MaxHeap:
@@ -39,8 +40,28 @@ class MaxHeap:
         array[first_index] = array[second_index]
         array[second_index] = temp
 
+    @classmethod
+    def get_kth_largest(cls, array, k):
+        """
+            Finds The kth largest number on an array using a heap
+        """
+        if k < 1 or k > len(array):
+            raise IndexError(f"{k} is out of range")
+        heap = Heap()
+        i = 0
+        for item in array:
+            heap.insert(item)
+        while i < k - 1:
+            heap.remove()
+            i += 1
+        return heap.max()
+
 
 numbers = [5, 3, 8, 4, 1, 2]
 
-MaxHeap.heapify(numbers)
+# MaxHeap.heapify(numbers)
+print(MaxHeap.get_kth_largest(numbers, 1))
+
 print(numbers)
+
+
