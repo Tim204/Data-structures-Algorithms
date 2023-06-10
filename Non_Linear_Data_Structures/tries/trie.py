@@ -9,6 +9,9 @@ class TrieNode:
     def has_child(self, ch):
         return self._children.__contains__(ch)
 
+    def has_children(self):
+        return not len(self._children) == 0
+
     def add_child(self, ch):
         self._children.__setitem__(ch, TrieNode(ch))
 
@@ -17,6 +20,9 @@ class TrieNode:
 
     def get_children(self):
         return self._children.values()
+
+    def remove_child(self, ch):
+        self._children.pop(ch)
 
     def __str__(self):
         return f"value={self.value}"
@@ -63,8 +69,33 @@ class Trie(TrieNode):
         #     self._traverse(child)
         # print(root.value)
 
+    def remove(self, word):
+        if word is None:
+            return
+        self._remove(self._root, word, 0)
+
+    def _remove(self, root, word, index):
+        if index == len(word):
+            # Remove the end of the word marker
+            root._is_end = False
+            return
+
+        ch = word[index]
+        child = root.get_child(ch)
+        if child is None:
+            return
+
+        self._remove(child, word, index + 1)
+        if not child.has_children() and not child._is_end:
+            root.remove_child(ch)
+
 
 trie = Trie()
-trie.inset("compare")
-trie.traverse()
-print(trie.contains(None))
+trie.inset("cap")
+trie.inset("cape")
+trie.remove('cape')
+
+print(trie.contains('cap'))
+print(trie.contains('cape'))
+
+
