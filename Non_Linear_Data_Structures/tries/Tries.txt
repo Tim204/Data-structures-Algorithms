@@ -1,0 +1,12 @@
+TRIES:
+
+. Tries are a specific type of trees but not necessarily binary trees since each child can have multiple nodes.
+. Very usefull when it comes to autompletion on search queries.
+
+. RUNTIME COMPLEXITIES ON TRIES:
+
+        . Tries support operation such as Insert, Lookup and Delete.
+        . All operations on tries have a runetime complexity of O(L)- where "L" happens to be the length of the word.
+        . The cost for looking up and inserting words in a try remains constant, regarless of how many words the trie
+          contains and for that reason tries are ideal for implementing autocompletion.
+
