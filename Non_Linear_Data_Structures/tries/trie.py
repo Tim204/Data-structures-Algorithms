@@ -89,13 +89,41 @@ class Trie(TrieNode):
         if not child.has_children() and not child._is_end:
             root.remove_child(ch)
 
+    def find_words(self, prefix):
+        words = []
+        last_node = self.find_last_node(prefix)
+        self._find_words(last_node, prefix, words)
+        return words
+
+    def _find_words(self, root, prefix, words):
+        if root is None:
+            return
+        if root._is_end:
+            words.append(prefix)
+
+        for child in root.get_children():
+            self._find_words(child, prefix + child.value, words)
+
+    def find_last_node(self, prefix):
+        if prefix is None:
+            return
+        current = self._root
+        for ch in prefix:
+            child = current.get_child(ch)
+            if child is None:
+                return None
+            current = child
+        return current
+
 
 trie = Trie()
-trie.inset("cap")
-trie.inset("cape")
-trie.remove('cape')
+trie.inset("car")
+trie.inset("card")
+trie.inset("care")
+trie.inset("careful")
+trie.inset("carefully")
+trie.inset('egg')
 
-print(trie.contains('cap'))
-print(trie.contains('cape'))
-
+print(trie.find_words('care'))
+print(trie.find_words('e'))
 
